@@ -1,0 +1,35 @@
+//Draw a PASCAL Triangle
+
+#include<stdio.h>
+int fact(int n);
+long comb(int n,int r);
+int main()
+{
+    int n,i,j;
+    printf("Enter a Number : ");
+    scanf("%d",&n);
+    for(i=0;i<=n;i++){
+        for(j=0;j<=i;j++){
+            printf("%ld\t",comb(i,j));
+        }
+         printf("\n");
+    }
+    return 0;
+}
+int fact(int n){
+    int fac=1;
+    if(n==0){
+        fac=1;
+        return fac;
+    }
+    while(n>0){
+        fac=fac*n;
+        n--;
+    }
+    return fac;
+}
+long comb(int n,int r){
+    long c;
+    c=fact(n)/(fact(n-r)*fact(r));
+    return c;
+}
