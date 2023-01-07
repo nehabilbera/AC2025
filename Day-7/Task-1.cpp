@@ -1,6 +1,6 @@
 //Searching an element in a sorted array
 
-//Time Complexity : O(N)
+//Time Complexity : O(logN)
 //Space Complexity : O(1)
 
 //{ Driver Code Starts
@@ -17,14 +17,26 @@ class Solution{
     // K: element to be searche
     int searchInSorted(int arr[], int N, int K) 
     { 
-        int i,count=0;
-        for(i=0;i<N;i++){
-            if(arr[i]==K)
-                count++;
-        }
-        if(count==0)
+        int i,u,l,m;
+        u=0;
+        l=N-1;
+        m=(u+l)/2;
+        while(u<=l){
+            if(K==arr[m]){
+            return 1;
+            break;
+            }
+            else if(K<arr[m]){
+                l=m-1;
+                m=(u+l)/2;
+            }
+            else{
+                u=m+1;
+                m=(u+l)/2;
+            }
+            }
+            if(u>l)
             return -1;
-        return 1;    
     }
 };
 
